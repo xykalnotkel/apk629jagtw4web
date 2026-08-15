@@ -8,32 +8,35 @@ Repository untuk koleksi project web.
 
 | Folder | Deskripsi |
 |--------|-----------|
-| metal-loaders | Library animasi loading bergaya industrial/metal. 123 variasi unik, pure CSS, tanpa dependency. |
+| metal-loaders | Library animasi loading + icon + UI animation bergaya purple/black metal. Vite + React. |
 
 ---
 
 ## metal-loaders
 
-Library animasi loading dengan UI bergaya industrial metal. Dibangun menggunakan Vite + React.
+Library animasi loading dengan UI bergaya purple/black metal industrial. Dibangun menggunakan Vite 8 + React 19.
 
 ### Fitur
 
-- 123 animasi loading yang semuanya berbeda
-- 12 kategori: Mechanical, Spinner, Dots, Morphing, Bars, Pulse, Geometric, Wave, 3D, Digital, Nature, Abstract
-- Custom SVG icon library (28 icon)
-- Search dan filter berdasarkan kategori
-- Sistem favorites (tersimpan di localStorage)
-- Copy CSS per animasi
-- Grid dan List view
-- Responsive (mobile-friendly)
-- Dark metal theme (copper, chrome, steel)
+- 218 animasi loading yang semuanya berbeda
+- 110 custom SVG icons dalam 10 kategori
+- 50 UI animations (card, swipe, text, hover, scroll, transition)
+- 55 styling effects (glass, border, shadow, gradient, texture, button, input, card)
+- Multi-page dengan React Router
+- 13 kategori filter
+- Search dan favorites
+- Copy SVG/CSS per item
+- Purple/black metal theme
+- Responsive design
 
 ### Tech Stack
 
 - Vite 8
 - React 19
-- Pure CSS animations (no animation libraries)
-- JetBrains Mono font
+- React Router
+- Pure CSS animations
+- Custom SVG icons
+- JetBrains Mono + Space Grotesk + Inter fonts
 
 ### Cara Menjalankan
 
@@ -51,27 +54,38 @@ Buka browser di `http://localhost:3000`
 metal-loaders/
   src/
     components/
-      IconLibrary.jsx    -- 28 custom SVG icons
+      Icons.jsx          -- Custom SVG icon components
+      Navbar.jsx         -- Navigation bar
     data/
-      animations.js      -- Data 123 animasi + kategori
+      animations.js      -- 218 loading animations data
+      icons.js           -- 110 icons data
+      uiAnimations.js    -- 50 UI animations
+      styleEffects.js    -- 55 style effects
+    pages/
+      Home.jsx           -- Landing page
+      LoadingLibrary.jsx -- Loading animations gallery
+      IconLibraryPage.jsx-- Icon gallery
+      AnimationLibrary.jsx -- UI animations gallery
+      StylingPage.jsx    -- Styling effects gallery
     styles/
-      global.css         -- Theme metal (warna, font, texture)
-      animations.css     -- Semua keyframes animasi
-      components.css     -- Styling card, header, filter, dll
-    App.jsx              -- Komponen utama
-    main.jsx             -- Entry point React
+      global.css         -- Purple/black metal theme
+      components.css     -- UI components
+      animations.css     -- 218 loading animations CSS
+      uiAnimations.css   -- 50 UI animations CSS
+      styleEffects.css   -- 55 style effects CSS
+    App.jsx
+    main.jsx
+  .github/
+    workflows/
+      deploy.yml         -- GitHub Actions CI/CD
   index.html
   package.json
   vite.config.js
 ```
 
-### Cara Pakai Animasi
+### GitHub Actions
 
-Setiap animasi dibuat dengan pure CSS. Untuk menggunakan salah satu animasi:
-
-1. Copy class dan keyframes dari `src/styles/animations.css`
-2. Tambahkan HTML sesuai struktur animasi yang dipilih
-3. Sesuaikan warna di CSS variables
+Workflow deploy otomatis setiap push ke branch main.
 
 ### Lisensi
 

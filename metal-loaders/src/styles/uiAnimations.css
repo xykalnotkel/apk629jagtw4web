@@ -1,0 +1,129 @@
+/* === 50+ UI ANIMATIONS === */
+/* Card */
+.demo-card{width:80px;height:50px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;overflow:hidden;position:relative;background:var(--bg-card);border:1px solid var(--border)}
+.flip-demo .flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:flipCard 2s ease-in-out infinite}
+.flip-front,.flip-back{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;backface-visibility:hidden;border-radius:5px}
+.flip-front{background:var(--bg-elevated);border:1px solid var(--border)}
+.flip-back{background:var(--purple-deep);transform:rotateY(180deg);color:var(--purple-bright)}
+@keyframes flipCard{0%,100%{transform:rotateY(0)}50%{transform:rotateY(180deg)}}
+.lift-demo .card-lift{background:var(--bg-elevated);border:1px solid var(--border);padding:10px;border-radius:5px;width:100%;text-align:center;animation:cardLift 2s ease-in-out infinite}
+@keyframes cardLift{0%,100%{transform:translateY(0);box-shadow:none}50%{transform:translateY(-6px);box-shadow:0 8px 20px rgba(139,92,246,.15)}}
+.tilt-demo .card-tilt{background:var(--bg-elevated);border:1px solid var(--border);padding:10px;border-radius:5px;width:100%;text-align:center;animation:cardTilt 2s ease-in-out infinite}
+@keyframes cardTilt{0%,100%{transform:perspective(200px) rotateY(0)}50%{transform:perspective(200px) rotateY(15deg)}}
+.shine-demo .card-shine{background:var(--bg-elevated);border:1px solid var(--border);padding:10px;border-radius:5px;width:100%;text-align:center;position:relative;overflow:hidden}
+.shine-demo .card-shine::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(135deg,transparent 40%,rgba(139,92,246,.1) 50%,transparent 60%);animation:cardShine 3s linear infinite}
+@keyframes cardShine{to{transform:translateX(100%)}}
+.fold-demo .card-fold{background:var(--bg-elevated);border:1px solid var(--border);padding:10px;border-radius:5px;width:100%;text-align:center;animation:cardFold 2s ease-in-out infinite;transform-origin:left}
+@keyframes cardFold{0%,100%{transform:rotateY(0)}50%{transform:rotateY(-30deg)}}
+.expand-demo .card-expand{background:var(--bg-elevated);border:1px solid var(--border);padding:8px;border-radius:5px;width:100%;text-align:center;animation:cardExpand 2s ease-in-out infinite}
+@keyframes cardExpand{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.slideup-demo{position:relative;height:50px}.slideup-bg{position:absolute;inset:0;background:var(--bg-elevated);border-radius:5px;border:1px solid var(--border)}.slideup-overlay{position:absolute;bottom:0;left:0;right:0;background:var(--purple-deep);padding:6px;border-radius:0 0 5px 5px;color:var(--purple-bright);font-size:9px;animation:slideUp 2s ease-in-out infinite}
+@keyframes slideUp{0%,100%{transform:translateY(100%)}50%{transform:translateY(0)}}
+.borderdraw-demo .card-bd{position:relative;padding:10px;text-align:center;font-size:10px;color:var(--text-secondary)}
+.borderdraw-demo .card-bd::before{content:'';position:absolute;inset:0;border:2px solid var(--purple);border-radius:5px;animation:borderDraw 2s linear infinite;clip-path:inset(0 100% 0 0)}
+@keyframes borderDraw{0%{clip-path:inset(0 100% 0 0)}25%{clip-path:inset(0 0 100% 0)}50%{clip-path:inset(0 0 0 100%)}75%{clip-path:inset(100% 0 0 0)}100%{clip-path:inset(0 100% 0 0)}}
+.blur-demo .card-blur{background:var(--bg-elevated);padding:10px;border-radius:5px;text-align:center;font-size:10px;color:var(--text-secondary);animation:blurReveal 2s ease-in-out infinite}
+@keyframes blurReveal{0%,100%{filter:blur(4px);opacity:.4}50%{filter:blur(0);opacity:1}}
+.cornerfold-demo .card-cf{background:var(--bg-elevated);border:1px solid var(--border);padding:10px;text-align:center;font-size:10px;color:var(--text-secondary);position:relative;overflow:hidden;border-radius:5px}
+.cornerfold-demo .card-cf::after{content:'';position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 16px 16px 0;border-color:transparent var(--bg-deep) transparent transparent;animation:cornerFold 2s ease-in-out infinite}
+@keyframes cornerFold{0%,100%{border-width:0 0 0 0}50%{border-width:0 16px 16px 0}}
+
+/* Swipe */
+.swipe-demo{width:100px;height:20px;background:var(--border);border-radius:10px;position:relative}.swipe-thumb{width:16px;height:16px;background:var(--purple);border-radius:50%;position:absolute;top:2px;animation:swipeMove 2s ease-in-out infinite}
+@keyframes swipeMove{0%,100%{left:2px}50%{left:82px}}
+.curl-demo{width:60px;height:40px;position:relative}.curl-page{width:100%;height:100%;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;animation:pageCurl 2s ease-in-out infinite;transform-origin:left}
+@keyframes pageCurl{0%,100%{transform:rotateY(0)}50%{transform:rotateY(-60deg)}}
+.parallax-demo{width:100%;height:50px;position:relative;overflow:hidden;border-radius:5px}.plx-bg{position:absolute;inset:0;background:var(--purple-deep);opacity:.3;animation:plxBack 3s ease-in-out infinite}.plx-fg{position:absolute;inset:10px;background:var(--purple);border-radius:3px;animation:plxFg 3s ease-in-out infinite}
+@keyframes plxBack{0%,100%{transform:translateX(0)}50%{transform:translateX(-10px)}}
+@keyframes plxFg{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+.carousel-demo{overflow:hidden;width:100px}.carousel-track{display:flex;gap:8px;animation:carouselSpin 3s linear infinite}
+.ci{width:24px;height:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--chrome-dim)}
+@keyframes carouselSpin{0%{transform:translateX(0)}100%{transform:translateX(-96px)}}
+.stack-demo{position:relative;width:60px;height:40px}.stack-card{width:50px;height:34px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;position:absolute;animation:stackSwipe 3s ease-in-out infinite}
+.stack-card:nth-child(2){animation-delay:.3s}.stack-card:nth-child(3){animation-delay:.6s}
+@keyframes stackSwipe{0%,80%,100%{transform:translateX(0) rotate(0);opacity:1}90%{transform:translateX(60px) rotate(10deg);opacity:0}}
+.cover-demo{display:flex;gap:4px;align-items:center;justify-content:center}.cover-item{width:20px;height:28px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;transition:all .3s}
+.cover-item.active{width:28px;background:var(--purple-deep);border-color:var(--purple-dim)}
+.pull-demo{width:40px;height:40px;border:2px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center}.pull-arrow{color:var(--purple);animation:pullArrow 1.5s ease-in-out infinite}
+@keyframes pullArrow{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:1}}
+.toggle-demo{width:50px;height:24px}.toggle-track{width:100%;height:100%;background:var(--border);border-radius:12px;position:relative}.toggle-knob{width:18px;height:18px;background:var(--purple);border-radius:50%;position:absolute;top:3px;animation:toggleMove 2s ease-in-out infinite}
+@keyframes toggleMove{0%,100%{left:3px}50%{left:29px}}
+.morph-slide-demo .morph-shape{width:30px;height:30px;background:var(--purple);animation:morphSlide 2s ease-in-out infinite}
+@keyframes morphSlide{0%,100%{border-radius:0;transform:translateX(-10px)}50%{border-radius:50%;transform:translateX(10px)}}
+.snap-demo{display:flex;gap:4px;overflow:hidden;width:80px}.snap-item{min-width:24px;height:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:3px;animation:snapScroll 3s ease-in-out infinite}
+@keyframes snapScroll{0%,100%{transform:translateX(0)}50%{transform:translateX(-28px)}}
+
+/* Text */
+.tw-demo{overflow:hidden}.tw-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--chrome);border-right:2px solid var(--purple);animation:twType 3s steps(11) infinite,twCur .5s step-end infinite;white-space:nowrap;width:0}
+@keyframes twType{0%,100%{width:0}40%,80%{width:11ch}}
+@keyframes twCur{50%{border-color:transparent}}
+.glitch-demo .glitch-text{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--chrome);position:relative;animation:glitchText 2s steps(1) infinite}
+@keyframes glitchText{0%,90%,100%{transform:translate(0);text-shadow:none}91%{transform:translate(-2px,1px);text-shadow:2px 0 var(--purple),-2px 0 var(--amethyst)}93%{transform:translate(2px,-1px);text-shadow:-2px 0 var(--purple),2px 0 var(--amethyst)}95%{transform:translate(0)}}
+.textwave-demo{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--chrome);display:flex}
+.tw-letter{display:inline-block;animation:twLetter 1.5s ease-in-out infinite}
+@keyframes twLetter{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.scramble-demo .scramble-text{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--purple-bright);animation:scrambleText 2s steps(1) infinite}
+@keyframes scrambleText{0%{opacity:.5}10%{opacity:1}20%{opacity:.7}100%{opacity:1}}
+.neon-demo .neon-text{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--purple-bright);animation:neonFlicker 2s ease-in-out infinite;text-shadow:0 0 8px var(--purple),0 0 20px rgba(139,92,246,.3)}
+@keyframes neonFlicker{0%,100%{opacity:1;text-shadow:0 0 8px var(--purple),0 0 20px rgba(139,92,246,.3)}5%{opacity:.4;text-shadow:none}10%{opacity:1}50%{opacity:.8;text-shadow:0 0 4px var(--purple)}55%{opacity:1;text-shadow:0 0 12px var(--purple),0 0 30px rgba(139,92,246,.4)}}
+.blurin-demo .blurin-text{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--chrome);animation:blurIn 2s ease-in-out infinite}
+@keyframes blurIn{0%,100%{filter:blur(8px);opacity:0}50%{filter:blur(0);opacity:1}}
+.gradflow-demo .gradflow-text{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;background:linear-gradient(90deg,var(--purple),var(--amethyst),var(--purple));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradFlow 2s linear infinite}
+@keyframes gradFlow{to{background-position:200%}}
+.textbounce-demo{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--purple-bright);display:flex}
+.tb-letter{display:inline-block;animation:tbLetter .8s ease-in-out infinite}
+@keyframes tbLetter{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.textrotate-demo{overflow:hidden;height:20px}.textrotate-inner{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--chrome);animation:textRotate 2s ease-in-out infinite}
+@keyframes textRotate{0%,20%{transform:translateY(0)}30%,50%{transform:translateY(-100%)}60%,80%{transform:translateY(-200%)}90%,100%{transform:translateY(-300%)}}
+.stroke-demo .stroke-text{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:transparent;-webkit-text-stroke:1px var(--purple);animation:strokeAnim 2s ease-in-out infinite}
+@keyframes strokeAnim{0%,100%{-webkit-text-stroke-color:var(--purple);color:transparent}50%{-webkit-text-stroke-color:var(--amethyst);color:var(--purple)}}
+.slidein-demo{overflow:hidden}.slidein-text{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--chrome);animation:slideIn 2s ease-in-out infinite}
+@keyframes slideIn{0%{transform:translateX(-100%);opacity:0}50%,80%{transform:translateX(0);opacity:1}100%{transform:translateX(100%);opacity:0}}
+.clip-demo{overflow:hidden}.clip-text{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--purple-bright);animation:clipReveal 2s ease-in-out infinite;clip-path:inset(0 100% 0 0)}
+@keyframes clipReveal{0%{clip-path:inset(0 100% 0 0)}50%,80%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 100%)}}
+.elastic-demo .elastic-text{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--purple-bright);animation:elasticText 1.5s ease-in-out infinite}
+@keyframes elasticText{0%,100%{transform:scaleX(1)}25%{transform:scaleX(1.3)}50%{transform:scaleX(.8)}75%{transform:scaleX(1.1)}}
+.split-demo{position:relative;height:40px;overflow:hidden}.split-top,.split-bot{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--purple-bright);position:absolute;left:0;right:0;text-align:center}
+.split-top{top:4px;animation:splitTop 2s ease-in-out infinite}.split-bot{bottom:4px;animation:splitBot 2s ease-in-out infinite;clip-path:inset(50% 0 0 0)}
+@keyframes splitTop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes splitBot{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+.shpop-demo .shpop-text{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--purple-bright);animation:shPop 1.5s ease-in-out infinite;text-shadow:2px 2px 0 var(--purple-deep),4px 4px 0 var(--grape)}
+@keyframes shPop{0%,100%{transform:translate(0);text-shadow:2px 2px 0 var(--purple-deep),4px 4px 0 var(--grape)}50%{transform:translate(-2px,-2px);text-shadow:4px 4px 0 var(--purple-deep),8px 8px 0 var(--grape)}}
+
+/* Hover */
+.ripple-demo .ripple-btn{padding:8px 20px;background:var(--purple);color:#fff;border:none;border-radius:4px;font-size:10px;position:relative;overflow:hidden;cursor:pointer}
+.ripple-demo .ripple-btn::after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.3) 0%,transparent 70%);transform:scale(0);animation:rippleClick 2s ease-out infinite}
+@keyframes rippleClick{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
+.magnetic-demo{width:40px;height:40px;display:flex;align-items:center;justify-content:center}.magnetic-dot{width:12px;height:12px;background:var(--purple);border-radius:50%;animation:magneticHover 2s ease-in-out infinite}
+@keyframes magneticHover{0%,100%{transform:translate(0)}25%{transform:translate(6px,-4px)}50%{transform:translate(-4px,6px)}75%{transform:translate(4px,4px)}}
+.iconbounce-demo .icon-bounce{font-size:24px;color:var(--purple);animation:iconBounce 1s ease-in-out infinite}
+@keyframes iconBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.underline-demo .ul-link{font-size:12px;color:var(--purple-bright);position:relative;cursor:pointer}.ul-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--purple);transition:width .3s;animation:ulDraw 2s ease-in-out infinite}
+@keyframes ulDraw{0%,100%{width:0}50%{width:100%}}
+.fill-demo .fill-btn{padding:6px 16px;border:2px solid var(--purple);color:var(--purple);background:transparent;border-radius:4px;font-size:10px;position:relative;overflow:hidden}
+.fill-demo .fill-btn::before{content:'';position:absolute;inset:0;background:var(--purple);transform:translateX(-100%);animation:fillBtn 2s ease-in-out infinite}
+@keyframes fillBtn{0%,100%{transform:translateX(-100%)}50%{transform:translateX(0)}}
+.glowbtn-demo .glow-btn{padding:6px 16px;background:var(--purple);color:#fff;border:none;border-radius:4px;font-size:10px;animation:glowBtn 2s ease-in-out infinite}
+@keyframes glowBtn{0%,100%{box-shadow:0 0 5px var(--purple)}50%{box-shadow:0 0 20px var(--purple),0 0 40px rgba(139,92,246,.3)}}
+.badge-demo{position:relative;width:24px;height:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:50%}.badge-dot{width:8px;height:8px;background:var(--purple);border-radius:50%;position:absolute;top:-2px;right:-2px;animation:badgePulse 1.5s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.avatar-demo .avatar-ring{width:32px;height:32px;border-radius:50%;background:var(--bg-elevated);border:2px solid var(--border);animation:avatarRing 2s ease-in-out infinite}
+@keyframes avatarRing{0%,100%{border-color:var(--border)}50%{border-color:var(--purple)}}
+.menu-demo{position:relative}.menu-trigger{padding:4px 12px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-secondary)}.menu-drop{position:absolute;top:100%;left:0;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:4px;animation:menuReveal 2s ease-in-out infinite;opacity:0;transform:translateY(-4px)}
+.menu-item{padding:3px 8px;font-size:9px;color:var(--text-secondary)}
+@keyframes menuReveal{0%,30%,100%{opacity:0;transform:translateY(-4px)}40%,80%{opacity:1;transform:translateY(0)}}
+.tooltip-demo{position:relative;display:flex;align-items:center;justify-content:center}.tooltip-target{width:24px;height:24px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text-secondary)}.tooltip-bubble{position:absolute;bottom:calc(100% + 4px);background:var(--purple);color:#fff;padding:3px 8px;border-radius:3px;font-size:8px;animation:tooltipPop 2s ease-in-out infinite;opacity:0}
+@keyframes tooltipPop{0%,30%,100%{opacity:0;transform:translateY(4px)}40%,80%{opacity:1;transform:translateY(0)}}
+
+/* Scroll */
+.fiu-demo .fiu-box{width:40px;height:24px;background:var(--purple);border-radius:4px;animation:fadeInUp 2s ease-in-out infinite}
+@keyframes fadeInUp{0%{transform:translateY(20px);opacity:0}50%,80%{transform:translateY(0);opacity:1}100%{transform:translateY(-20px);opacity:0}}
+.plx2-demo{position:relative;width:100%;height:50px;overflow:hidden;border-radius:5px}.plx2-back{position:absolute;inset:0;background:var(--purple-deep);opacity:.3;animation:plx2B 3s ease-in-out infinite}.plx2-front{position:absolute;inset:8px;background:var(--purple);border-radius:3px;animation:plx2F 3s ease-in-out infinite}
+@keyframes plx2B{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes plx2F{0%,100%{transform:scale(1)}50%{transform:scale(.9)}}
+.scrollprog-demo{width:80px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}.scrollprog-bar{width:50%;height:100%;background:var(--purple);border-radius:2px;animation:scrollProg 2s ease-in-out infinite}
+@keyframes scrollProg{0%{width:0}100%{width:100%}}
+.pin-demo{width:40px;height:40px;display:flex;align-items:center;justify-content:center}.pin-el{width:24px;height:24px;background:var(--purple);border-radius:4px;animation:pinEl 2s ease-in-out infinite}
+@keyframes pinEl{0%,100%{transform:translateY(-10px)}50%{transform:translateY(10px)}}
+.countup-demo .countup-num{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--purple-bright);animation:countUp 2s ease-out infinite}
+@keyframes countUp{0%{opacity:0;transform:translateY(10px)}20%,100%{opacity:1;transform:translateY(0)}}

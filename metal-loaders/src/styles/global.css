@@ -1,56 +1,47 @@
-/* ═══════════════════════════════════════════
-   METAL LOADING LIBRARY — GLOBAL THEME
-   Industrial UI/UX — Minimal Gradient
-   ═══════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  /* Metal Palette */
-  --bg-deep:#08080a;
-  --bg-panel:#101014;
-  --bg-card:#16161a;
-  --bg-card-hover:#1c1c22;
-  --bg-elevated:#1e1e24;
+  --bg-deep:#06060a;
+  --bg-panel:#0c0c14;
+  --bg-card:#12121c;
+  --bg-card-hover:#18182a;
+  --bg-elevated:#1a1a2e;
 
-  /* Metal Accents */
-  --chrome:#a8a8b0;
-  --chrome-dim:#5a5a64;
-  --chrome-bright:#d4d4dc;
-  --copper:#c07840;
-  --copper-dim:#8a5530;
-  --steel:#5878a0;
-  --steel-dim:#3a5070;
-  --iron:#707078;
-  --bronze:#9a7040;
-  --titanium:#8888a0;
+  --purple:#8b5cf6;
+  --purple-bright:#a78bfa;
+  --purple-dim:#6d28d9;
+  --purple-deep:#4c1d95;
+  --violet:#7c3aed;
+  --amethyst:#9333ea;
+  --grape:#6b21a8;
 
-  /* Functional */
-  --text-primary:#d8d8e0;
-  --text-secondary:#808088;
-  --text-dim:#48484e;
-  --border:#222228;
-  --border-hover:#333338;
+  --chrome:#b8b8c8;
+  --chrome-dim:#585868;
+  --chrome-bright:#e0e0f0;
+  --steel:#6878a0;
+
+  --text-primary:#e4e4f0;
+  --text-secondary:#8888a0;
+  --text-dim:#484858;
+  --border:#1e1e30;
+  --border-hover:#2e2e48;
+
   --success:#50a060;
   --warning:#c09040;
   --danger:#b04040;
+  --glow:rgba(139,92,246,.15);
 
-  /* Sizing */
   --radius:6px;
   --radius-lg:10px;
   --radius-xl:14px;
+  --nav-h:64px;
 }
 
-html{
-  scroll-behavior:smooth;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-family:'Inter',system-ui,sans-serif;
   background:var(--bg-deep);
   color:var(--text-primary);
   min-height:100vh;
@@ -58,47 +49,18 @@ body{
   line-height:1.5;
 }
 
-/* Noise overlay */
 body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  pointer-events:none;
-  opacity:.03;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content:'';position:fixed;inset:0;z-index:9999;
+  pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Scrollbar */
-::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--bg-deep)}
-::-webkit-scrollbar-thumb{background:var(--chrome-dim);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:var(--chrome)}
+::-webkit-scrollbar-thumb{background:var(--purple-deep);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--purple-dim)}
+::selection{background:rgba(139,92,246,.3);color:#fff}
 
-/* Selection */
-::selection{background:rgba(192,120,64,.3);color:var(--chrome-bright)}
-
-/* Utility */
 .mono{font-family:'JetBrains Mono',monospace}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
-
-/* Brushed metal texture for cards */
-.metal-texture{
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 1px,
-      rgba(255,255,255,.008) 1px,
-      rgba(255,255,255,.008) 2px
-    );
-}
-
-/* Rivet decoration */
-.rivet{
-  width:6px;height:6px;
-  border-radius:50%;
-  background:var(--bg-deep);
-  border:1px solid var(--border);
-  box-shadow:inset 0 1px 2px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.03);
-}
+.metal-texture{background-image:repeating-linear-gradient(90deg,transparent,transparent 1px,rgba(139,92,246,.006) 1px,rgba(139,92,246,.006) 2px)}
+.anim-stage{width:64px;height:64px;display:flex;align-items:center;justify-content:center;position:relative}
