@@ -1,0 +1,63 @@
+name: CI - Next.js Build & Type Check
+
+on:
+  push:
+    paths:
+      - 'CekCelah/**'
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'CekCelah/**'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: CekCelah
+
+jobs:
+  build:
+    name: Build & Type-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: CekCelah/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Ensure C++ binary exists (build if missing)
+        run: |
+          if [ ! -x backend/cekcelah-scanner ]; then
+            echo "Binary missing, compiling..."
+            sudo apt-get update -y && sudo apt-get install -y --no-install-recommends g++
+            g++ -std=c++20 -O2 -static -static-libgcc -static-libstdc++ \
+                -o backend/cekcelah-scanner backend/scanner.cpp
+            chmod +x backend/cekcelah-scanner
+          else
+            echo "Binary already present."
+          fi
+          file backend/cekcelah-scanner
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Build Next.js
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: CekCelah/.next
+          retention-days: 3

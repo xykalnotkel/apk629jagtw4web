@@ -1,0 +1,83 @@
+name: Build C++ Scanner
+
+# Compile C++ scanner menjadi static binary x86_64 Linux (cocok dengan Vercel runtime)
+# Setiap ada perubahan di backend/scanner.cpp atau workflow ini, binary akan
+# di-compile ulang dgn g++ lalu di-commit kembali ke repo.
+
+on:
+  push:
+    paths:
+      - 'CekCelah/backend/scanner.cpp'
+      - '.github/workflows/build-scanner.yml'
+    branches:
+      - main
+  workflow_dispatch:  # bisa dijalankan manual dari tab Actions
+
+permissions:
+  contents: write  # izin commit balik ke repo
+
+defaults:
+  run:
+    working-directory: CekCelah
+
+jobs:
+  build:
+    name: Compile & Test C++ Scanner
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y --no-install-recommends g++ make file
+          g++ --version | head -1
+
+      - name: Compile scanner (statically-linked, x86_64)
+        run: |
+          mkdir -p backend
+          g++ -std=c++20 -O2 \
+              -static -static-libgcc -static-libstdc++ \
+              -o backend/cekcelah-scanner \
+              backend/scanner.cpp
+          chmod +x backend/cekcelah-scanner
+          ls -la backend/
+          file backend/cekcelah-scanner
+
+      - name: Verify binary is fully static
+        run: |
+          echo "=== Binary info ==="
+          file backend/cekcelah-scanner
+          echo "=== Dynamic deps (harus 'not a dynamic executable') ==="
+          ldd backend/cekcelah-scanner 2>&1 || true
+          echo "=== Size ==="
+          du -h backend/cekcelah-scanner
+
+      - name: Quick smoke test
+        run: |
+          echo "--- Running scanner against example.com ---"
+          ./backend/cekcelah-scanner example.com | head -20
+          echo "--- Validate output has HOST + CHECK lines ---"
+          ./backend/cekcelah-scanner example.com > /tmp/scan.out
+          if grep -q "^HOST" /tmp/scan.out && grep -q "^CHECK" /tmp/scan.out && grep -q "^DONE" /tmp/scan.out; then
+            echo "Smoke test PASSED"
+          else
+            echo "Smoke test FAILED"
+            cat /tmp/scan.out
+            exit 1
+          fi
+
+      - name: Commit binary back to repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/cekcelah-scanner
+          if git diff --cached --quiet; then
+            echo "Binary is unchanged, nothing to commit."
+          else
+            git commit -m "chore(scanner): rebuild C++ static binary [skip ci]"
+            git push
+            echo "Binary updated and pushed."
+          fi
