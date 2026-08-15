@@ -79,7 +79,7 @@
 @keyframes a39{from{transform:scaleX(1)}to{transform:scaleX(.8) scaleY(1.1)}}
 .anim-040 .bolt{width:14px;height:28px;background:var(--purple);clip-path:polygon(40% 0%,60% 0%,50% 40%,70% 40%,30% 100%,45% 50%,25% 50%);animation:a40 1.5s ease-in-out infinite}
 @keyframes a40{0%,100%{opacity:1}30%{opacity:.2}35%{opacity:1}60%{opacity:.3}65%{opacity:1}}
-.anim-041 .crystal{width:8px;height:8px;background:var(--amethyst);transform:rotate(45deg);animation:a41 2s ease-in-out infinite}.anim-041 .crystal:nth-child(2){animation-delay:.3s;background:var(--purple;width:6px;height:6px}.anim-041 .crystal:nth-child(3){animation-delay:.6s;background:var(--chrome-dim);width:5px;height:5px}
+.anim-041 .crystal{width:8px;height:8px;background:var(--amethyst);transform:rotate(45deg);animation:a41 2s ease-in-out infinite}.anim-041 .crystal:nth-child(2){animation-delay:.3s;background:var(--purple);width:6px;height:6px}.anim-041 .crystal:nth-child(3){animation-delay:.6s;background:var(--chrome-dim);width:5px;height:5px}
 @keyframes a41{0%,100%{transform:rotate(45deg) scale(0);opacity:0}40%{transform:rotate(45deg) scale(1.2);opacity:1}60%{transform:rotate(45deg) scale(1);opacity:1}}
 .anim-042 .clck{width:32px;height:32px;border:2px solid var(--chrome-dim);border-radius:50%;position:relative}.anim-042 .hand{width:2px;height:10px;background:var(--purple);position:absolute;bottom:50%;left:calc(50% - 1px);transform-origin:bottom center;animation:spin 2s linear infinite}
 .anim-043{display:grid;grid-template-columns:repeat(4,6px);gap:2px}.anim-043 i{width:6px;height:6px;background:var(--purple);animation:a43 2s ease-in-out infinite}
