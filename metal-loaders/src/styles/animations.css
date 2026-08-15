@@ -1,0 +1,1443 @@
+/* ═══════════════════════════════════════════════════
+   120+ UNIQUE LOADING ANIMATIONS
+   Each animation is genuinely different — not recolors
+   ═══════════════════════════════════════════════════ */
+
+/* === FOUNDATION === */
+.anim-stage{
+  width:64px;height:64px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+
+/* === #001 CLASSIC SPINNER === */
+.anim-001 .ring{
+  width:44px;height:44px;
+  border:3px solid var(--border);
+  border-top-color:var(--copper);
+  border-radius:50%;
+  animation:a001 .8s linear infinite;
+}
+@keyframes a001{to{transform:rotate(360deg)}}
+
+/* === #002 DUAL RING COUNTER-ROTATE === */
+.anim-002 .r1,.anim-002 .r2{position:absolute;border-radius:50%;border:3px solid transparent}
+.anim-002 .r1{width:44px;height:44px;border-top-color:var(--copper);border-bottom-color:var(--copper);animation:spin 1s linear infinite}
+.anim-002 .r2{width:28px;height:28px;border-left-color:var(--steel);border-right-color:var(--steel);animation:spin .6s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* === #003 THREE DOT BOUNCE === */
+.anim-003{display:flex;gap:8px;align-items:center}
+.anim-003 i{width:10px;height:10px;background:var(--copper);border-radius:50%;animation:a003 1.2s ease-in-out infinite}
+.anim-003 i:nth-child(2){animation-delay:.15s;background:var(--chrome)}
+.anim-003 i:nth-child(3){animation-delay:.3s;background:var(--steel)}
+@keyframes a003{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-18px);opacity:1}}
+
+/* === #004 MORPHING BLOB === */
+.anim-004 .blob{
+  width:40px;height:40px;background:var(--copper);
+  animation:a004 3s ease-in-out infinite;
+}
+@keyframes a004{
+  0%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
+  50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}
+  100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
+}
+
+/* === #005 PULSE RING === */
+.anim-005 .ring{
+  width:20px;height:20px;
+  border:2px solid var(--copper);
+  border-radius:50%;
+  animation:a005 1.5s ease-out infinite;
+}
+@keyframes a005{0%{transform:scale(1);opacity:1}100%{transform:scale(3);opacity:0}}
+
+/* === #006 WAVE EQUALIZER === */
+.anim-006{display:flex;gap:3px;align-items:center;height:40px}
+.anim-006 i{width:4px;background:var(--copper);border-radius:2px;animation:a006 .8s ease-in-out infinite alternate}
+@keyframes a006{from{height:6px}to{height:36px}}
+
+/* === #007 FLIP CARD 3D === */
+.anim-007 .card{
+  width:36px;height:36px;
+  background:var(--copper);
+  animation:a007 1.6s ease-in-out infinite;
+}
+@keyframes a007{
+  0%{transform:perspective(200px) rotateX(0) rotateY(0)}
+  25%{transform:perspective(200px) rotateX(180deg) rotateY(0)}
+  50%{transform:perspective(200px) rotateX(180deg) rotateY(180deg)}
+  75%{transform:perspective(200px) rotateX(0) rotateY(180deg)}
+  100%{transform:perspective(200px) rotateX(0) rotateY(360deg)}
+}
+
+/* === #008 RADAR SWEEP === */
+.anim-008 .radar{
+  width:44px;height:44px;
+  border:2px solid var(--steel-dim);
+  border-radius:50%;
+  position:relative;overflow:hidden;
+}
+.anim-008 .radar::after{
+  content:'';position:absolute;top:0;left:50%;width:50%;height:50%;
+  background:linear-gradient(90deg,transparent,rgba(88,120,160,.6));
+  transform-origin:bottom left;animation:a008 2s linear infinite;
+}
+.anim-008 .radar::before{
+  content:'';position:absolute;width:100%;height:1px;top:50%;left:0;background:var(--steel-dim);
+}
+@keyframes a008{to{transform:rotate(360deg)}}
+
+/* === #009 HEARTBEAT === */
+.anim-009 .heart{
+  width:28px;height:28px;
+  background:var(--copper);
+  clip-path:path('M14 6C14 2 10 0 7 0C3 0 0 3 0 7C0 14 14 24 14 24C14 24 28 14 28 7C28 3 25 0 21 0C18 0 14 2 14 6Z');
+  animation:a009 1.2s ease-in-out infinite;
+}
+@keyframes a009{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}45%{transform:scale(1.15)}}
+
+/* === #010 INFINITY LOOP === */
+.anim-010 .inf{
+  width:52px;height:24px;position:relative;
+}
+.anim-010 .inf::before,.anim-010 .inf::after{
+  content:'';position:absolute;width:24px;height:24px;
+  border:3px solid var(--copper);border-radius:50%;
+  animation:a010 2s ease-in-out infinite;
+}
+.anim-010 .inf::before{left:0}
+.anim-010 .inf::after{right:0;animation-delay:1s}
+@keyframes a010{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.1);opacity:1}}
+
+/* === #011 DNA HELIX === */
+.anim-011{display:flex;flex-direction:column;gap:2px;align-items:center}
+.anim-011 i{width:6px;height:6px;border-radius:50%;animation:a011 1.5s ease-in-out infinite}
+.anim-011 i:nth-child(odd){background:var(--copper)}
+.anim-011 i:nth-child(even){background:var(--steel)}
+@keyframes a011{0%,100%{transform:translateX(-12px);opacity:.3}50%{transform:translateX(12px);opacity:1}}
+
+/* === #012 PISTON PUMP === */
+.anim-012 .piston{
+  width:8px;height:32px;
+  background:var(--chrome);
+  border-radius:2px;
+  animation:a012 1s ease-in-out infinite;
+}
+.anim-012 .base{
+  width:24px;height:6px;
+  background:var(--chrome-dim);
+  border-radius:2px;
+  position:absolute;bottom:10px;
+}
+@keyframes a012{0%,100%{transform:translateY(0);height:32px}50%{transform:translateY(12px);height:16px}}
+
+/* === #013 GLITCH BOX === */
+.anim-013 .gbox{
+  width:32px;height:32px;
+  background:var(--copper);
+  animation:a013 2s steps(1) infinite;
+}
+@keyframes a013{
+  0%,87%,100%{transform:translate(0);opacity:1}
+  88%{transform:translate(-4px,2px);opacity:.8}
+  90%{transform:translate(4px,-2px);opacity:.6;clip-path:inset(20% 0 40% 0)}
+  92%{transform:translate(-2px,4px);opacity:.9;clip-path:inset(60% 0 10% 0)}
+  94%{transform:translate(2px,-4px);opacity:.7;clip-path:inset(10% 0 60% 0)}
+  96%{transform:translate(0);opacity:1;clip-path:none}
+}
+
+/* === #014 CONVEYOR BELT === */
+.anim-014 .belt{
+  width:56px;height:12px;
+  border:2px solid var(--chrome-dim);
+  border-radius:6px;
+  position:relative;overflow:hidden;
+}
+.anim-014 .belt::after{
+  content:'';position:absolute;width:8px;height:8px;
+  background:var(--copper);border-radius:2px;
+  top:0;left:-8px;animation:a014 1.2s linear infinite;
+}
+@keyframes a014{to{left:56px}}
+
+/* === #015 ORBIT SYSTEM === */
+.anim-015 .center{width:8px;height:8px;background:var(--copper);border-radius:50%;position:absolute}
+.anim-015 .orbit{
+  width:44px;height:44px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  position:absolute;
+  animation:a015orb 2s linear infinite;
+}
+.anim-015 .orbit::after{
+  content:'';position:absolute;width:6px;height:6px;
+  background:var(--steel);border-radius:50%;top:-3px;left:50%;margin-left:-3px;
+}
+.anim-015 .orbit:nth-child(3){width:30px;height:30px;animation-duration:1.2s;border-color:var(--border)}
+.anim-015 .orbit:nth-child(3)::after{background:var(--copper);width:4px;height:4px;top:-2px;margin-left:-2px}
+@keyframes a015orb{to{transform:rotate(360deg)}}
+
+/* === #016 PENDULUM === */
+.anim-016 .arm{
+  width:2px;height:36px;
+  background:var(--chrome-dim);
+  transform-origin:top center;
+  animation:a016 1.5s ease-in-out infinite;
+  position:relative;
+}
+.anim-016 .arm::after{
+  content:'';position:absolute;bottom:-6px;left:-5px;
+  width:12px;height:12px;
+  background:var(--copper);border-radius:50%;
+}
+@keyframes a016{0%,100%{transform:rotate(-30deg)}50%{transform:rotate(30deg)}}
+
+/* === #017 CRT SCANLINE === */
+.anim-017 .crt{
+  width:48px;height:36px;
+  border:2px solid var(--chrome-dim);
+  border-radius:4px;
+  position:relative;overflow:hidden;
+}
+.anim-017 .crt::after{
+  content:'';position:absolute;width:100%;height:3px;
+  background:rgba(192,120,64,.3);
+  animation:a017 1.5s linear infinite;
+}
+.anim-017 .crt::before{
+  content:'';position:absolute;inset:4px;
+  border:1px solid var(--copper-dim);
+  border-radius:2px;opacity:.3;
+}
+@keyframes a017{0%{top:-3px}100%{top:100%}}
+
+/* === #018 SPRING BOUNCE === */
+.anim-018 .spring{
+  width:20px;height:8px;
+  border:2px solid var(--copper);
+  border-top:none;
+  animation:a018 .8s ease-in-out infinite;
+}
+.anim-018 .ball{
+  width:10px;height:10px;
+  background:var(--copper);
+  border-radius:50%;
+  position:absolute;bottom:12px;
+  animation:a018ball .8s ease-in-out infinite;
+}
+@keyframes a018{0%,100%{height:8px}50%{height:24px}}
+@keyframes a018ball{0%,100%{bottom:14px}50%{bottom:34px}}
+
+/* === #019 WATER DROP === */
+.anim-019 .drop{
+  width:16px;height:16px;
+  background:var(--steel);
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  animation:a019 1.5s ease-in-out infinite;
+}
+@keyframes a019{
+  0%{transform:rotate(-45deg) translateY(-10px);opacity:0}
+  30%{transform:rotate(-45deg) translateY(0);opacity:1}
+  60%{transform:rotate(-45deg) translateY(0) scale(1,0.6);opacity:1}
+  80%{transform:rotate(-45deg) translateY(0) scale(1.3,0.4);opacity:.5}
+  100%{transform:rotate(-45deg) translateY(-10px) scale(1);opacity:0}
+}
+
+/* === #020 LIQUID METAL === */
+.anim-020 .metal{
+  width:40px;height:40px;
+  background:var(--chrome);
+  animation:a020 2s ease-in-out infinite;
+  filter:blur(0px);
+}
+@keyframes a020{
+  0%,100%{border-radius:60% 40% 50% 50%/40% 60% 40% 60%;transform:rotate(0deg) scale(1)}
+  25%{border-radius:40% 60% 60% 40%/60% 40% 60% 40%;transform:rotate(90deg) scale(1.1)}
+  50%{border-radius:50% 50% 40% 60%/50% 50% 60% 40%;transform:rotate(180deg) scale(.9)}
+  75%{border-radius:60% 40% 50% 50%/40% 60% 40% 60%;transform:rotate(270deg) scale(1.05)}
+}
+
+/* === #021 TYPEWRITER CURSOR === */
+.anim-021 .cursor{
+  width:2px;height:28px;
+  background:var(--chrome-bright);
+  animation:a021 .8s step-end infinite;
+}
+@keyframes a021{0%,100%{opacity:1}50%{opacity:0}}
+
+/* === #022 GEAR CHAIN === */
+.anim-022 .gear{
+  width:28px;height:28px;
+  border:4px dotted var(--copper);
+  border-radius:50%;
+  animation:a022 3s linear infinite;
+  position:absolute;
+}
+.anim-022 .gear:nth-child(2){left:22px;animation-direction:reverse;width:22px;height:22px;border-color:var(--steel)}
+@keyframes a022{to{transform:rotate(360deg)}}
+
+/* === #023 HEXAGON MORPH === */
+.anim-023{
+  width:40px;height:40px;
+  background:var(--copper);
+  animation:a023 3s ease-in-out infinite;
+}
+@keyframes a023{
+  0%{clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);transform:rotate(0)}
+  33%{clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%);transform:rotate(60deg)}
+  66%{clip-path:polygon(50% 0%,100% 38%,82% 100%,18% 100%,0% 38%);transform:rotate(120deg)}
+  100%{clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);transform:rotate(180deg)}
+}
+
+/* === #024 NEURON FIRE === */
+.anim-024 .neuron{
+  width:10px;height:10px;
+  background:var(--copper);
+  border-radius:50%;
+  position:absolute;
+  animation:a024 1.5s ease-out infinite;
+}
+.anim-024 .neuron:nth-child(1){top:27px;left:27px;animation-delay:0s}
+.anim-024 .neuron:nth-child(2){top:10px;left:10px;animation-delay:.3s}
+.anim-024 .neuron:nth-child(3){top:10px;right:10px;animation-delay:.6s}
+.anim-024 .neuron:nth-child(4){bottom:10px;left:10px;animation-delay:.9s}
+.anim-024 .neuron:nth-child(5){bottom:10px;right:10px;animation-delay:1.2s}
+@keyframes a024{0%{transform:scale(0);opacity:1}50%{transform:scale(1.5);opacity:.6}100%{transform:scale(0);opacity:0}}
+
+/* === #025 LOADING BAR === */
+.anim-025{width:52px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.anim-025 .bar{width:30%;height:100%;background:var(--copper);border-radius:2px;animation:a025 1.4s ease-in-out infinite}
+@keyframes a025{0%{transform:translateX(-150%)}100%{transform:translateX(450%)}}
+
+/* === #026 DIAMOND SPIN === */
+.anim-026 .dia{
+  width:28px;height:28px;
+  border:3px solid var(--copper);
+  animation:a026 1.5s ease-in-out infinite;
+}
+@keyframes a026{
+  0%{transform:rotate(45deg) scale(1)}
+  50%{transform:rotate(225deg) scale(.6)}
+  100%{transform:rotate(405deg) scale(1)}
+}
+
+/* === #027 MATRIX RAIN === */
+.anim-027{display:flex;gap:3px;align-items:flex-start;height:44px;overflow:hidden}
+.anim-027 i{
+  width:3px;background:var(--steel);border-radius:1px;
+  animation:a027 1s linear infinite;
+}
+@keyframes a027{0%{height:0;opacity:1}50%{height:30px}100%{height:0;opacity:0;transform:translateY(30px)}}
+
+/* === #028 TRIANGLE ORBIT === */
+.anim-028 .tri{
+  width:0;height:0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:18px solid var(--copper);
+  position:absolute;
+  animation:a028 2s linear infinite;
+  transform-origin:0 28px;
+}
+@keyframes a028{to{transform:rotate(360deg)}}
+
+/* === #029 ELASTIC SCALE === */
+.anim-029 .ball{
+  width:20px;height:20px;
+  background:var(--copper);
+  border-radius:50%;
+  animation:a029 1s ease-in-out infinite;
+}
+@keyframes a029{
+  0%,100%{transform:scaleY(1) scaleX(1)}
+  25%{transform:scaleY(.6) scaleX(1.4)}
+  50%{transform:scaleY(1.4) scaleX(.7)}
+  75%{transform:scaleY(.8) scaleX(1.2)}
+}
+
+/* === #030 RIPPLE MULTI === */
+.anim-030 .rip{
+  width:12px;height:12px;
+  border:2px solid var(--copper);
+  border-radius:50%;
+  position:absolute;
+  animation:a030 2s ease-out infinite;
+}
+.anim-030 .rip:nth-child(2){animation-delay:.7s}
+.anim-030 .rip:nth-child(3){animation-delay:1.4s}
+@keyframes a030{0%{transform:scale(1);opacity:1}100%{transform:scale(4);opacity:0}}
+
+/* === #031 FOLDING SQUARE === */
+.anim-031{perspective:200px}
+.anim-031 .face{
+  width:32px;height:32px;background:var(--copper);
+  animation:a031 2.4s linear infinite;
+}
+@keyframes a031{0%{transform:rotateX(-360deg)}100%{transform:rotateX(0)}}
+
+/* === #032 CROSS SPINNER === */
+.anim-032 .cross{position:relative;width:36px;height:36px;animation:a032spin 1.2s linear infinite}
+.anim-032 .cross::before,.anim-032 .cross::after{content:'';position:absolute;background:var(--copper);border-radius:2px}
+.anim-032 .cross::before{width:100%;height:6px;top:15px}
+.anim-032 .cross::after{width:6px;height:100%;left:15px}
+@keyframes a032spin{to{transform:rotate(360deg)}}
+
+/* === #033 SINE WAVE === */
+.anim-033 .dot{
+  width:6px;height:6px;
+  background:var(--copper);border-radius:50%;
+  position:absolute;
+  animation:a033 1.5s ease-in-out infinite;
+}
+@keyframes a033{
+  0%{left:0;top:32px}
+  25%{left:16px;top:10px}
+  50%{left:32px;top:32px}
+  75%{left:48px;top:54px}
+  100%{left:64px;top:32px}
+}
+
+/* === #034 STACKED RINGS === */
+.anim-034 .ring{
+  position:absolute;
+  border:2px solid var(--copper);
+  border-radius:50%;
+  animation:a034 2s ease-in-out infinite;
+}
+.anim-034 .ring:nth-child(1){width:16px;height:16px;animation-delay:0s}
+.anim-034 .ring:nth-child(2){width:28px;height:28px;animation-delay:.3s;border-color:var(--steel)}
+.anim-034 .ring:nth-child(3){width:40px;height:40px;animation-delay:.6s;border-color:var(--chrome-dim)}
+@keyframes a034{0%,100%{opacity:.2;transform:scale(.9)}50%{opacity:1;transform:scale(1.05)}}
+
+/* === #035 BUBBLE RISE === */
+.anim-035 .bub{
+  width:8px;height:8px;
+  background:var(--steel);
+  border-radius:50%;
+  position:absolute;bottom:0;
+  animation:a035 2s ease-in infinite;opacity:0;
+}
+.anim-035 .bub:nth-child(1){left:15px;animation-delay:0s}
+.anim-035 .bub:nth-child(2){left:28px;animation-delay:.5s;width:6px;height:6px}
+.anim-035 .bub:nth-child(3){left:40px;animation-delay:1s;width:10px;height:10px}
+@keyframes a035{0%{bottom:0;opacity:0}10%{opacity:.7}100%{bottom:60px;opacity:0}}
+
+/* === #036 PROGRESS STEPS === */
+.anim-036{display:flex;gap:4px;align-items:center}
+.anim-036 i{width:12px;height:12px;border:2px solid var(--chrome-dim);border-radius:2px;animation:a036 2s ease-in-out infinite}
+.anim-036 i:nth-child(1){animation-delay:0s}
+.anim-036 i:nth-child(2){animation-delay:.3s}
+.anim-036 i:nth-child(3){animation-delay:.6s}
+.anim-036 i:nth-child(4){animation-delay:.9s}
+@keyframes a036{0%,100%{background:transparent;border-color:var(--chrome-dim)}20%,60%{background:var(--copper);border-color:var(--copper)}}
+
+/* === #037 MOON PHASE === */
+.anim-037 .moon{
+  width:36px;height:36px;
+  border-radius:50%;
+  background:var(--chrome);
+  box-shadow:inset -12px 0 0 var(--bg-card);
+  animation:a037 3s ease-in-out infinite;
+}
+@keyframes a037{0%,100%{box-shadow:inset -12px 0 0 var(--bg-card)}50%{box-shadow:inset 12px 0 0 var(--bg-card)}}
+
+/* === #038 ATOM === */
+.anim-038 .nucleus{width:8px;height:8px;background:var(--copper);border-radius:50%;position:absolute}
+.anim-038 .electron{
+  width:40px;height:14px;
+  border:1.5px solid var(--steel-dim);
+  border-radius:50%;
+  position:absolute;
+}
+.anim-038 .electron:nth-child(2){animation:a038 2s linear infinite}
+.anim-038 .electron:nth-child(3){transform:rotate(60deg);animation:a038 2s linear infinite reverse}
+.anim-038 .electron:nth-child(4){transform:rotate(-60deg);animation:a038 2.5s linear infinite}
+@keyframes a038{to{transform:rotate(360deg)}}
+
+/* === #039 FLAME === */
+.anim-039 .flame{
+  width:20px;height:32px;
+  background:var(--copper);
+  border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  animation:a039 .5s ease-in-out infinite alternate;
+  transform-origin:bottom center;
+}
+@keyframes a039{
+  from{transform:scaleX(1) scaleY(1);border-radius:50% 50% 50% 50%/60% 60% 40% 40%}
+  to{transform:scaleX(.8) scaleY(1.1);border-radius:50% 50% 50% 50%/70% 70% 30% 30%}
+}
+
+/* === #040 LIGHTNING === */
+.anim-040 .bolt{
+  width:20px;height:36px;
+  background:var(--copper);
+  clip-path:polygon(40% 0%,60% 0%,50% 40%,70% 40%,30% 100%,45% 50%,25% 50%);
+  animation:a040 1.5s ease-in-out infinite;
+}
+@keyframes a040{0%,100%{opacity:1}30%{opacity:.2}35%{opacity:1}60%{opacity:.3}65%{opacity:1}}
+
+/* === #041 CRYSTAL GROW === */
+.anim-041 .crystal{
+  width:12px;height:12px;
+  background:var(--steel);
+  transform:rotate(45deg);
+  animation:a041 2s ease-in-out infinite;
+}
+.anim-041 .crystal:nth-child(2){animation-delay:.3s;width:8px;height:8px;background:var(--copper)}
+.anim-041 .crystal:nth-child(3){animation-delay:.6s;width:6px;height:6px;background:var(--chrome-dim)}
+@keyframes a041{
+  0%,100%{transform:rotate(45deg) scale(0);opacity:0}
+  40%{transform:rotate(45deg) scale(1.2);opacity:1}
+  60%{transform:rotate(45deg) scale(1);opacity:1}
+}
+
+/* === #042 SWEEP HAND === */
+.anim-042 .clock{
+  width:40px;height:40px;
+  border:2px solid var(--chrome-dim);
+  border-radius:50%;
+  position:relative;
+}
+.anim-042 .hand{
+  width:2px;height:14px;
+  background:var(--copper);
+  position:absolute;
+  bottom:50%;left:calc(50% - 1px);
+  transform-origin:bottom center;
+  animation:a042 2s linear infinite;
+}
+@keyframes a042{to{transform:rotate(360deg)}}
+
+/* === #043 SQUARE DISSOLVE === */
+.anim-043{display:grid;grid-template-columns:repeat(4,8px);gap:2px}
+.anim-043 i{width:8px;height:8px;background:var(--copper);animation:a043 2s ease-in-out infinite}
+@keyframes a043{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}}
+
+/* === #044 SPINNING ARCS === */
+.anim-044 .arc{
+  position:absolute;
+  border:3px solid transparent;
+  border-radius:50%;
+}
+.anim-044 .arc:nth-child(1){width:44px;height:44px;border-top-color:var(--copper);animation:spin 1.2s linear infinite}
+.anim-044 .arc:nth-child(2){width:32px;height:32px;border-right-color:var(--steel);animation:spin .8s linear infinite reverse}
+.anim-044 .arc:nth-child(3){width:20px;height:20px;border-bottom-color:var(--chrome-dim);animation:spin 1.5s linear infinite}
+
+/* === #045 TYPEWRITER TEXT === */
+.anim-045 .text{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--chrome);
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:2px solid var(--copper);
+  animation:a045 3s steps(8) infinite,a045cursor .5s step-end infinite;
+  width:8ch;
+}
+@keyframes a045{0%,100%{width:0}50%,80%{width:8ch}}
+@keyframes a045cursor{50%{border-color:transparent}}
+
+/* === #046 SPINNING PLUS === */
+.anim-046 .plus{
+  font-size:32px;font-weight:200;
+  color:var(--copper);
+  animation:a046 1.5s linear infinite;
+}
+@keyframes a046{to{transform:rotate(360deg)}}
+
+/* === #047 CONCENTRIC PULSE === */
+.anim-047 .c{
+  position:absolute;border-radius:50%;
+  border:2px solid var(--copper);
+  animation:a047 2s ease-out infinite;
+}
+.anim-047 .c:nth-child(1){width:10px;height:10px;animation-delay:0s}
+.anim-047 .c:nth-child(2){width:10px;height:10px;animation-delay:.5s}
+.anim-047 .c:nth-child(3){width:10px;height:10px;animation-delay:1s}
+@keyframes a047{0%{transform:scale(1);opacity:1}100%{transform:scale(5);opacity:0}}
+
+/* === #048 ROTATING SQUARES === */
+.anim-048 .sq{
+  width:30px;height:30px;
+  border:2px solid var(--copper);
+  position:absolute;
+  animation:a048 2s ease-in-out infinite;
+}
+.anim-048 .sq:nth-child(2){border-color:var(--steel);animation-delay:-.5s}
+@keyframes a048{0%,100%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(.5)}}
+
+/* === #049 ELEVATOR === */
+.anim-049 .cab{
+  width:16px;height:16px;
+  background:var(--copper);
+  border-radius:2px;
+  animation:a049 1.5s ease-in-out infinite;
+}
+@keyframes a049{0%,100%{transform:translateY(-14px)}50%{transform:translateY(14px)}}
+
+/* === #050 SPINNER COIN === */
+.anim-050 .coin{
+  width:36px;height:36px;
+  border:4px solid var(--copper);
+  border-radius:50%;
+  border-right-color:transparent;
+  animation:a050 .7s linear infinite;
+}
+@keyframes a050{to{transform:rotate(360deg)}}
+
+/* === #051 KALEIDOSCOPE === */
+.anim-051 .seg{
+  width:16px;height:3px;
+  background:var(--copper);
+  position:absolute;
+  transform-origin:center center;
+  animation:a051 3s linear infinite;
+}
+@keyframes a051{to{transform:rotate(360deg)}}
+
+/* === #052 STAIRCASE BARS === */
+.anim-052{display:flex;gap:3px;align-items:flex-end}
+.anim-052 i{width:5px;background:var(--copper);border-radius:1px;animation:a052 1.2s ease-in-out infinite}
+@keyframes a052{0%,100%{height:8px}50%{height:36px}}
+
+/* === #053 SHIMMER LINE === */
+.anim-053{width:52px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;position:relative}
+.anim-053 .shim{
+  width:40%;height:100%;
+  background:var(--copper);
+  animation:a053 1.5s ease-in-out infinite;
+}
+@keyframes a053{0%{transform:translateX(-120%)}100%{transform:translateX(350%)}}
+
+/* === #054 DOT CHASE RING === */
+.anim-054{animation:spin 2s linear infinite}
+.anim-054 i{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--copper);position:absolute;
+  animation:a054fade 1.5s ease-in-out infinite;
+}
+@keyframes a054fade{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1.2)}}
+
+/* === #055 MORPH STAR === */
+.anim-055{
+  width:36px;height:36px;
+  background:var(--copper);
+  animation:a055 2.5s ease-in-out infinite;
+}
+@keyframes a055{
+  0%{clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+  50%{clip-path:circle(50%);transform:rotate(180deg)}
+  100%{clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);transform:rotate(360deg)}
+}
+
+/* === #056 EXPLODING DOTS === */
+.anim-056 .dot{
+  width:6px;height:6px;
+  background:var(--copper);border-radius:50%;
+  position:absolute;
+  animation:a056 1.5s ease-out infinite;
+}
+@keyframes a056{0%{transform:translate(0) scale(1);opacity:1}100%{opacity:0}}
+
+/* === #057 WRENCH TURN === */
+.anim-057 .wrench{
+  width:8px;height:36px;
+  background:var(--chrome);
+  border-radius:4px;
+  position:relative;
+  animation:a057 1.5s ease-in-out infinite;
+}
+.anim-057 .wrench::before{
+  content:'';position:absolute;top:-6px;left:-6px;
+  width:20px;height:12px;
+  border:3px solid var(--chrome);
+  border-bottom:none;
+  border-radius:10px 10px 0 0;
+}
+@keyframes a057{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(15deg)}}
+
+/* === #058 STEAM VALVE === */
+.anim-058 .valve{
+  width:36px;height:36px;
+  border:3px solid var(--chrome-dim);
+  border-radius:50%;
+  position:relative;
+  animation:a058 2s linear infinite;
+}
+.anim-058 .valve::before{
+  content:'';position:absolute;width:100%;height:3px;
+  background:var(--chrome-dim);top:calc(50% - 1.5px);
+}
+.anim-058 .valve::after{
+  content:'';position:absolute;width:3px;height:100%;
+  background:var(--chrome-dim);left:calc(50% - 1.5px);
+}
+@keyframes a058{to{transform:rotate(360deg)}}
+
+/* === #059 SMOKE RISE === */
+.anim-059 .smoke{
+  width:14px;height:14px;
+  background:var(--chrome-dim);
+  border-radius:50%;
+  position:absolute;bottom:8px;
+  animation:a059 2s ease-out infinite;
+  opacity:0;
+}
+@keyframes a059{0%{transform:translateY(0) scale(.5);opacity:0}30%{opacity:.5}100%{transform:translateY(-40px) translateX(10px) scale(1.5);opacity:0}}
+
+/* === #060 HYPNOTIC SPIRAL === */
+.anim-060 .spiral{
+  width:44px;height:44px;
+  border:3px solid transparent;
+  border-top-color:var(--copper);
+  border-left-color:var(--copper);
+  border-radius:50%;
+  animation:a060 1s linear infinite;
+}
+@keyframes a060{to{transform:rotate(360deg)}}
+
+/* === #061 DIGITAL COUNTER === */
+.anim-061 .digit{
+  font-family:'JetBrains Mono',monospace;
+  font-size:18px;font-weight:700;
+  color:var(--copper);
+  animation:a061 1s steps(10) infinite;
+}
+@keyframes a061{
+  0%{content:'0'}10%{content:'1'}20%{content:'2'}30%{content:'3'}40%{content:'4'}
+  50%{content:'5'}60%{content:'6'}70%{content:'7'}80%{content:'8'}90%{content:'9'}
+}
+
+/* === #062 MAGNETIC FIELD === */
+.anim-062 .field{
+  width:40px;height:20px;
+  border:2px solid var(--steel-dim);
+  border-radius:50%;
+  position:absolute;
+  animation:a062 2s ease-in-out infinite;
+}
+.anim-062 .field:nth-child(2){width:30px;height:15px;animation-delay:.3s}
+.anim-062 .field:nth-child(3){width:20px;height:10px;animation-delay:.6s}
+@keyframes a062{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+
+/* === #063 CELL DIVISION === */
+.anim-063 .cell{
+  width:20px;height:20px;
+  background:var(--steel);
+  border-radius:50%;
+  animation:a063 2s ease-in-out infinite;
+}
+@keyframes a063{
+  0%,20%{transform:translateX(0);border-radius:50%}
+  40%{transform:translateX(0);border-radius:40% 60% 60% 40%;width:28px}
+  60%{transform:translateX(-8px);border-radius:50%}
+  80%{transform:translateX(-8px);opacity:1}
+  100%{transform:translateX(-8px);opacity:.3}
+}
+
+/* === #064 LOADING DOTS SCALE === */
+.anim-064{display:flex;gap:6px;align-items:center}
+.anim-064 i{
+  width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  animation:a064 .8s ease-in-out infinite alternate;
+}
+@keyframes a064{from{transform:scale(.4);opacity:.3}to{transform:scale(1.2);opacity:1}}
+
+/* === #065 WINDING PATH === */
+.anim-065 .path{
+  width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  animation:a065 2s ease-in-out infinite;
+}
+@keyframes a065{
+  0%{transform:translate(-20px,0)}
+  25%{transform:translate(0,-14px)}
+  50%{transform:translate(20px,0)}
+  75%{transform:translate(0,14px)}
+  100%{transform:translate(-20px,0)}
+}
+
+/* === #066 BINARY SWITCH === */
+.anim-066{display:flex;gap:4px}
+.anim-066 i{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--chrome-dim);
+  animation:a066 .5s steps(1) infinite;
+}
+@keyframes a066{0%{opacity:.3}50%{opacity:1}}
+
+/* === #067 TUNNEL VISION === */
+.anim-067 .tunnel{
+  border:2px solid var(--copper-dim);
+  position:absolute;
+  animation:a067 2s ease-in-out infinite;
+}
+.anim-067 .tunnel:nth-child(1){width:44px;height:44px;animation-delay:0s}
+.anim-067 .tunnel:nth-child(2){width:44px;height:44px;animation-delay:.5s}
+.anim-067 .tunnel:nth-child(3){width:44px;height:44px;animation-delay:1s}
+@keyframes a067{0%{transform:scale(1.5);opacity:0}30%{opacity:1}100%{transform:scale(.2);opacity:0}}
+
+/* === #068 WARP SPEED === */
+.anim-068 .streak{
+  width:2px;height:4px;
+  background:var(--chrome);
+  position:absolute;
+  animation:a068 .8s linear infinite;
+}
+@keyframes a068{0%{transform:translateY(0) scaleY(1);opacity:1}100%{transform:translateY(30px) scaleY(6);opacity:0}}
+
+/* === #069 SPINNING LOCK === */
+.anim-069 .lock{
+  width:24px;height:20px;
+  border:3px solid var(--copper);
+  border-radius:3px;
+  position:relative;
+  animation:a069 1.5s ease-in-out infinite;
+}
+.anim-069 .lock::before{
+  content:'';position:absolute;
+  width:14px;height:12px;
+  border:3px solid var(--copper);
+  border-bottom:none;
+  border-radius:8px 8px 0 0;
+  top:-14px;left:2px;
+}
+@keyframes a069{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+
+/* === #070 BOUNCE DROP === */
+.anim-070 .ball{
+  width:14px;height:14px;
+  background:var(--copper);
+  border-radius:50%;
+  animation:a070 .8s cubic-bezier(.5,.05,.5,.95) infinite;
+}
+@keyframes a070{
+  0%,100%{transform:translateY(-16px) scaleY(1)}
+  50%{transform:translateY(8px) scaleY(1)}
+  70%{transform:translateY(8px) scaleY(.6) scaleX(1.3)}
+  85%{transform:translateY(-4px) scaleY(1.1) scaleX(.95)}
+}
+
+/* === #071 ROTATING BORDER === */
+.anim-071 .box{
+  width:36px;height:36px;
+  position:relative;overflow:hidden;
+  border-radius:4px;
+}
+.anim-071 .box::before{
+  content:'';position:absolute;
+  inset:-50%;
+  background:conic-gradient(from 0deg,transparent 0%,var(--copper) 25%,transparent 50%);
+  animation:a071 1.5s linear infinite;
+}
+.anim-071 .box::after{
+  content:'';position:absolute;
+  inset:2px;background:var(--bg-card);border-radius:3px;
+}
+
+@keyframes a071{to{transform:rotate(360deg)}}
+
+/* === #072 BREATHING === */
+.anim-072 .breath{
+  width:24px;height:24px;
+  border:2px solid var(--copper);
+  border-radius:50%;
+  animation:a072 3s ease-in-out infinite;
+}
+@keyframes a072{
+  0%,100%{transform:scale(.6);opacity:.4}
+  50%{transform:scale(1.2);opacity:1}
+}
+
+/* === #073 PIXELATE === */
+.anim-073{display:grid;grid-template-columns:repeat(4,7px);gap:1px}
+.anim-073 i{width:7px;height:7px;background:var(--copper);animation:a073 2s ease infinite}
+@keyframes a073{0%,100%{opacity:0}25%{opacity:1}}
+
+/* === #074 SLIDING DOOR === */
+.anim-074{width:52px;height:16px;overflow:hidden;position:relative;border-radius:2px}
+.anim-074 .door{
+  width:26px;height:100%;
+  background:var(--copper);
+  position:absolute;
+  animation:a074 1.5s ease-in-out infinite;
+}
+.anim-074 .door:nth-child(1){left:0}
+.anim-074 .door:nth-child(2){right:0}
+@keyframes a074{0%,100%{transform:translateX(0)}50%{transform:translateX(-26px)}}
+
+/* === #075 ORBITAL DOTS === */
+.anim-075{position:relative;animation:spin 3s linear infinite}
+.anim-075 i{width:6px;height:6px;background:var(--copper);border-radius:50%;position:absolute}
+@keyframes spin75{to{transform:rotate(360deg)}}
+
+/* === #076 SCANNING LINE === */
+.anim-076{width:48px;height:48px;border:2px solid var(--border);border-radius:4px;position:relative;overflow:hidden}
+.anim-076 .scan{
+  width:100%;height:2px;
+  background:var(--copper);
+  position:absolute;top:0;
+  animation:a076 2s linear infinite;
+}
+@keyframes a076{0%{top:0}100%{top:100%}}
+
+/* === #077 DOMINO FALL === */
+.anim-077{display:flex;gap:3px;align-items:flex-end}
+.anim-077 i{
+  width:6px;height:24px;
+  background:var(--copper);
+  border-radius:1px;
+  transform-origin:bottom center;
+  animation:a077 1.5s ease-in-out infinite;
+}
+@keyframes a077{0%,100%{transform:rotate(0)}25%{transform:rotate(30deg)}75%{transform:rotate(-5deg)}}
+
+/* === #078 MORPHING RING === */
+.anim-078 .mr{
+  width:40px;height:40px;
+  border:3px solid var(--copper);
+  animation:a078 2s ease-in-out infinite;
+}
+@keyframes a078{
+  0%,100%{border-radius:50%;transform:rotate(0)}
+  25%{border-radius:8px;transform:rotate(90deg)}
+  50%{border-radius:50%;transform:rotate(180deg)}
+  75%{border-radius:20%;transform:rotate(270deg)}
+}
+
+/* === #079 SPARK === */
+.anim-079 .spark{
+  width:4px;height:4px;
+  background:var(--copper);
+  border-radius:50%;
+  position:absolute;
+  animation:a079 1s ease-out infinite;
+}
+@keyframes a079{
+  0%{transform:translate(0,0) scale(1);opacity:1}
+  100%{opacity:0}
+}
+
+/* === #080 HELIX ROTATE === */
+.anim-080 .strand{
+  width:40px;height:6px;
+  position:absolute;
+  animation:a080 2s linear infinite;
+}
+.anim-080 .strand::before,.anim-080 .strand::after{
+  content:'';position:absolute;width:8px;height:8px;border-radius:50%;
+}
+.anim-080 .strand::before{left:0;background:var(--copper)}
+.anim-080 .strand::after{right:0;background:var(--steel)}
+@keyframes a080{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+
+/* === #081 TYPING DOTS === */
+.anim-081{display:flex;gap:4px;align-items:center}
+.anim-081 .td{
+  width:6px;height:6px;
+  background:var(--chrome);border-radius:50%;
+  animation:a081 1.4s ease-in-out infinite;
+}
+@keyframes a081{0%,60%,100%{transform:translateY(0);opacity:.3}30%{transform:translateY(-8px);opacity:1}}
+
+/* === #082 GRADIENT SWEEP === */
+.anim-082 .sweep{
+  width:48px;height:48px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,var(--copper) 0deg,transparent 60deg);
+  animation:a082 1.2s linear infinite;
+  position:relative;
+}
+.anim-082 .sweep::after{
+  content:'';position:absolute;inset:6px;
+  background:var(--bg-card);border-radius:50%;
+}
+
+@keyframes a082{to{transform:rotate(360deg)}}
+
+/* === #083 INTERLOCKING === */
+.anim-083 .inter{
+  width:24px;height:24px;
+  border:3px solid var(--copper);
+  border-radius:50%;
+  position:absolute;
+  animation:a083 2s ease-in-out infinite;
+}
+.anim-083 .inter:nth-child(2){border-color:var(--steel)}
+@keyframes a083{
+  0%,100%{transform:translateX(-6px) rotate(0)}
+  50%{transform:translateX(6px) rotate(180deg)}
+}
+
+/* === #084 PROGRESS CHASE === */
+.anim-084{width:48px;height:48px;position:relative}
+.anim-084 .track{width:100%;height:100%;border:3px solid var(--border);border-radius:50%}
+.anim-084 .chase{
+  position:absolute;inset:-3px;
+  border:3px solid transparent;
+  border-top-color:var(--copper);
+  border-radius:50%;
+  animation:a084 1s cubic-bezier(.5,.1,.5,.9) infinite;
+}
+@keyframes a084{0%{transform:rotate(0deg)}100%{transform:rotate(720deg)}}
+
+/* === #085 SQUARE PATH === */
+.anim-085 .sq{
+  width:10px;height:10px;
+  background:var(--copper);
+  animation:a085 2s linear infinite;
+}
+@keyframes a085{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(24px,0)}
+  50%{transform:translate(24px,24px)}
+  75%{transform:translate(0,24px)}
+  100%{transform:translate(0,0)}
+}
+
+/* === #086 WAVE STRING === */
+.anim-086{display:flex;gap:2px;align-items:center;height:40px}
+.anim-086 i{
+  width:3px;height:3px;
+  background:var(--copper);border-radius:50%;
+  animation:a086 1.2s ease-in-out infinite;
+}
+@keyframes a086{0%,100%{transform:translateY(0);height:3px}50%{transform:translateY(-14px);height:12px}}
+
+/* === #087 FAN BLADE === */
+.anim-087 .fan{
+  width:40px;height:40px;
+  position:relative;
+  animation:a087 1s linear infinite;
+}
+.anim-087 .blade{
+  width:8px;height:18px;
+  background:var(--chrome);
+  border-radius:4px;
+  position:absolute;
+  transform-origin:center 20px;
+}
+@keyframes a087{to{transform:rotate(360deg)}}
+
+/* === #088 DISSOLVE CIRCLE === */
+.anim-088 .dc{
+  width:36px;height:36px;
+  border-radius:50%;
+  background:var(--copper);
+  animation:a088 1.5s ease-in-out infinite;
+}
+@keyframes a088{
+  0%,100%{clip-path:circle(100%);opacity:1}
+  50%{clip-path:circle(0%);opacity:0}
+}
+
+/* === #089 CHAIN LINK === */
+.anim-089 .link{
+  width:18px;height:10px;
+  border:2px solid var(--copper);
+  border-radius:5px;
+  position:absolute;
+  animation:a089 1s ease-in-out infinite;
+}
+.anim-089 .link:nth-child(2){animation-delay:.2s}
+.anim-089 .link:nth-child(3){animation-delay:.4s}
+@keyframes a089{0%,100%{transform:translateX(-12px)}50%{transform:translateX(12px)}}
+
+/* === #090 SCALE ROTATE === */
+.anim-090 .sr{
+  width:28px;height:28px;
+  border:3px solid var(--copper);
+  border-radius:4px;
+  animation:a090 2s ease-in-out infinite;
+}
+@keyframes a090{
+  0%,100%{transform:rotate(0deg) scale(1);border-radius:4px}
+  25%{transform:rotate(90deg) scale(.6);border-radius:50%}
+  50%{transform:rotate(180deg) scale(1);border-radius:4px}
+  75%{transform:rotate(270deg) scale(.8);border-radius:20%}
+}
+
+/* === #091 RAINBOW SPIN === */
+.anim-091 .rs{
+  width:40px;height:40px;
+  border-radius:50%;
+  border:4px solid transparent;
+  animation:a091 1s linear infinite;
+  border-top-color:var(--copper);
+  border-right-color:var(--steel);
+  border-bottom-color:var(--chrome-dim);
+}
+@keyframes a091{to{transform:rotate(360deg)}}
+
+/* === #092 ZIGZAG === */
+.anim-092 .zig{
+  width:8px;height:8px;
+  background:var(--copper);
+  border-radius:2px;
+  animation:a092 1.5s ease-in-out infinite;
+}
+@keyframes a092{
+  0%{transform:translate(-16px,-10px)}
+  25%{transform:translate(16px,-10px)}
+  50%{transform:translate(-16px,10px)}
+  75%{transform:translate(16px,10px)}
+  100%{transform:translate(-16px,-10px)}
+}
+
+/* === #093 ECLIPSE === */
+.anim-093 .sun{
+  width:36px;height:36px;
+  background:var(--copper);
+  border-radius:50%;
+  position:relative;
+}
+.anim-093 .moon2{
+  width:36px;height:36px;
+  background:var(--bg-card);
+  border-radius:50%;
+  position:absolute;
+  animation:a093 3s ease-in-out infinite;
+}
+@keyframes a093{
+  0%,100%{transform:translateX(30px)}
+  50%{transform:translateX(-30px)}
+}
+
+/* === #094 FINGERPRINT === */
+.anim-094 .fp{
+  width:40px;height:40px;
+  border:2px solid var(--copper-dim);
+  border-radius:50%;
+  position:absolute;
+  border-top-color:var(--copper);
+  animation:a094 1.5s linear infinite;
+}
+@keyframes a094{to{transform:rotate(360deg)}}
+
+/* === #095 SWING HAMMER === */
+.anim-095 .hammer{
+  width:6px;height:28px;
+  background:var(--chrome);
+  transform-origin:top center;
+  animation:a095 1s ease-in-out infinite;
+  position:relative;
+}
+.anim-095 .hammer::after{
+  content:'';position:absolute;bottom:-4px;left:-6px;
+  width:18px;height:10px;
+  background:var(--copper);border-radius:2px;
+}
+@keyframes a095{0%,100%{transform:rotate(-30deg)}50%{transform:rotate(30deg)}}
+
+/* === #096 PULSE CROSS === */
+.anim-096 .pc{position:absolute;background:var(--copper);animation:a096 1.5s ease-in-out infinite}
+.anim-096 .pc:nth-child(1){width:36px;height:4px;top:18px;left:10px}
+.anim-096 .pc:nth-child(2){width:4px;height:36px;top:10px;left:18px}
+@keyframes a096{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:.5}}
+
+/* === #097 SPINNING DOT RING === */
+.anim-097 .ring{
+  width:40px;height:40px;
+  border:2px dashed var(--chrome-dim);
+  border-radius:50%;
+  position:relative;
+  animation:a097 2s linear infinite;
+}
+.anim-097 .ring::after{
+  content:'';position:absolute;width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  top:-4px;left:50%;margin-left:-4px;
+}
+@keyframes a097{to{transform:rotate(360deg)}}
+
+/* === #098 MORPHING GLYPH === */
+.anim-098 .glyph{
+  font-size:32px;
+  color:var(--copper);
+  animation:a098 3s ease-in-out infinite;
+}
+@keyframes a098{
+  0%,20%{content:'◇';transform:rotate(0)}
+  25%,45%{content:'○';transform:rotate(90deg)}
+  50%,70%{content:'□';transform:rotate(180deg)}
+  75%,95%{content:'△';transform:rotate(270deg)}
+  100%{content:'◇';transform:rotate(360deg)}
+}
+
+/* === #099 SPINNING DASH === */
+.anim-099 .dash{
+  width:40px;height:40px;
+  border:3px solid var(--border);
+  border-top-color:var(--copper);
+  border-radius:50%;
+  animation:a099 1s cubic-bezier(.5,.1,.5,.9) infinite;
+}
+@keyframes a099{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+/* === #100 CRYSTAL SPIN === */
+.anim-100 .crys{
+  width:24px;height:32px;
+  background:var(--steel);
+  clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+  animation:a100 2s ease-in-out infinite;
+}
+@keyframes a100{0%,100%{transform:rotateY(0deg) scale(1)}50%{transform:rotateY(180deg) scale(.8)}}
+
+/* === #101 THERMOMETER === */
+.anim-101 .therm{
+  width:8px;height:40px;
+  border:2px solid var(--chrome-dim);
+  border-radius:4px 4px 0 0;
+  position:relative;overflow:hidden;
+}
+.anim-101 .therm::after{
+  content:'';position:absolute;bottom:0;width:100%;
+  background:var(--copper);
+  animation:a101 2s ease-in-out infinite;
+}
+.anim-101 .bulb{
+  width:14px;height:14px;
+  background:var(--copper);
+  border-radius:50%;
+  position:absolute;bottom:2px;left:-5px;
+}
+@keyframes a101{0%,100%{height:30%}50%{height:80%}}
+
+/* === #102 LOADING CUBE === */
+.anim-102 .cube{
+  width:28px;height:28px;
+  background:var(--copper);
+  animation:a102 1.5s ease-in-out infinite;
+}
+@keyframes a102{
+  0%{transform:perspective(100px) rotateX(-45deg) rotateY(45deg)}
+  50%{transform:perspective(100px) rotateX(-45deg) rotateY(225deg)}
+  100%{transform:perspective(100px) rotateX(-45deg) rotateY(405deg)}
+}
+
+/* === #103 DOTS GRID === */
+.anim-103{display:grid;grid-template-columns:repeat(3,10px);gap:4px}
+.anim-103 i{width:10px;height:10px;background:var(--copper);border-radius:50%;animation:a103 1.5s ease-in-out infinite}
+@keyframes a103{0%,100%{transform:scale(.5);opacity:.2}50%{transform:scale(1);opacity:1}}
+
+/* === #104 HOURGLASS === */
+.anim-104 .hg{
+  width:28px;height:40px;
+  position:relative;
+  animation:a104 2s ease-in-out infinite;
+}
+.anim-104 .hg::before,.anim-104 .hg::after{
+  content:'';position:absolute;width:0;height:0;
+  border-left:14px solid transparent;
+  border-right:14px solid transparent;
+}
+.anim-104 .hg::before{top:0;border-top:18px solid var(--copper)}
+.anim-104 .hg::after{bottom:0;border-bottom:18px solid var(--copper-dim)}
+@keyframes a104{0%,100%{transform:rotate(0deg)}50%{transform:rotate(180deg)}}
+
+/* === #105 RIPPLE DOT === */
+.anim-105 .dot{width:12px;height:12px;background:var(--copper);border-radius:50%;position:absolute}
+.anim-105 .ring2{
+  width:12px;height:12px;
+  border:2px solid var(--copper);
+  border-radius:50%;
+  position:absolute;
+  animation:a105 1.5s ease-out infinite;
+}
+@keyframes a105{0%{transform:scale(1);opacity:1}100%{transform:scale(3.5);opacity:0}}
+
+/* === #106 COLOR SPINNER === */
+.anim-106 .cs{
+  position:absolute;border:3px solid transparent;border-radius:50%;
+}
+.anim-106 .cs:nth-child(1){width:44px;height:44px;border-top-color:var(--copper);animation:spin 1s linear infinite}
+.anim-106 .cs:nth-child(2){width:34px;height:34px;border-left-color:var(--steel);animation:spin .7s linear infinite reverse}
+.anim-106 .cs:nth-child(3){width:24px;height:24px;border-bottom-color:var(--chrome-dim);animation:spin .5s linear infinite}
+
+/* === #107 LOADING PILL === */
+.anim-107{width:44px;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.anim-107 .pill{width:16px;height:100%;background:var(--copper);border-radius:4px;animation:a107 1.2s ease-in-out infinite}
+@keyframes a107{0%,100%{transform:translateX(0)}50%{transform:translateX(28px)}}
+
+/* === #108 SCALED RINGS === */
+.anim-108 .sr{
+  position:absolute;
+  border:2px solid var(--copper);
+  border-radius:50%;
+  animation:a108 2s ease-in-out infinite;
+}
+@keyframes a108{0%,100%{transform:scale(.6) rotate(0);opacity:.3}50%{transform:scale(1) rotate(180deg);opacity:1}}
+
+/* === #109 LOADING SPIN === */
+.anim-109 .ls{
+  width:36px;height:36px;
+  border:4px solid var(--border);
+  border-radius:50%;
+  position:relative;
+}
+.anim-109 .ls::after{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  top:-4px;left:50%;margin-left:-4px;
+  animation:a109 1s linear infinite;
+  transform-origin:4px 22px;
+}
+@keyframes a109{to{transform:rotate(360deg)}}
+
+/* === #110 FLIP DOTS === */
+.anim-110{display:flex;gap:6px}
+.anim-110 i{
+  width:10px;height:10px;
+  background:var(--copper);border-radius:2px;
+  animation:a110 1.2s ease-in-out infinite;
+}
+@keyframes a110{0%,100%{transform:rotateY(0deg)}50%{transform:rotateY(180deg);background:var(--steel)}}
+
+/* === #111 EXPANDING SQUARE === */
+.anim-111 .es{
+  width:12px;height:12px;
+  border:2px solid var(--copper);
+  animation:a111 1.5s ease-out infinite;
+}
+.anim-111 .es:nth-child(2){animation-delay:.5s}
+@keyframes a111{0%{transform:scale(1);opacity:1}100%{transform:scale(3.5);opacity:0}}
+
+/* === #112 ROTATE FADE === */
+.anim-112 .rf{
+  width:32px;height:32px;
+  background:var(--copper);
+  animation:a112 1.8s ease-in-out infinite;
+}
+@keyframes a112{
+  0%{transform:rotate(0deg) scale(1);opacity:1;border-radius:0}
+  50%{transform:rotate(180deg) scale(.5);opacity:.4;border-radius:50%}
+  100%{transform:rotate(360deg) scale(1);opacity:1;border-radius:0}
+}
+
+/* === #113 PULSE BARS === */
+.anim-113{display:flex;gap:4px;align-items:center}
+.anim-113 i{width:4px;height:20px;background:var(--copper);border-radius:2px;animation:a113 1s ease-in-out infinite}
+@keyframes a113{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+
+/* === #114 CIRCULAR DOT === */
+.anim-114{position:relative}
+.anim-114 .dot{
+  width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  position:absolute;
+  animation:a114 1.5s linear infinite;
+  transform-origin:4px 22px;
+}
+@keyframes a114{to{transform:rotate(360deg)}}
+
+/* === #115 MORPH DIAMOND === */
+.anim-115 .md{
+  width:32px;height:32px;
+  background:var(--copper);
+  animation:a115 2s ease-in-out infinite;
+}
+@keyframes a115{
+  0%,100%{transform:rotate(45deg) scale(1)}
+  25%{transform:rotate(135deg) scale(.7);border-radius:50%}
+  50%{transform:rotate(225deg) scale(1)}
+  75%{transform:rotate(315deg) scale(.8);border-radius:30%}
+}
+
+/* === #116 WAVE BOUNCE === */
+.anim-116{display:flex;gap:4px;align-items:flex-end}
+.anim-116 i{
+  width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  animation:a116 .8s ease-in-out infinite;
+}
+@keyframes a116{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+/* === #117 LOADING ARC === */
+.anim-117 .arc{
+  width:40px;height:40px;
+  border:3px solid var(--border);
+  border-top-color:var(--copper);
+  border-radius:50%;
+  animation:a117 1s linear infinite;
+}
+@keyframes a117{to{transform:rotate(360deg)}}
+
+/* === #118 GRID FADE === */
+.anim-118{display:grid;grid-template-columns:repeat(4,8px);gap:3px}
+.anim-118 i{width:8px;height:8px;background:var(--copper);animation:a118 2s ease-in-out infinite}
+@keyframes a118{0%,100%{opacity:.1;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
+
+/* === #119 ROTATING HEX === */
+.anim-119{
+  width:36px;height:36px;
+  background:var(--copper);
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  animation:a119 1.5s ease-in-out infinite;
+}
+@keyframes a119{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(60deg) scale(.7)}}
+
+/* === #120 LOADING FLOWER === */
+.anim-120 .petal{
+  width:12px;height:20px;
+  background:var(--copper);
+  border-radius:50%;
+  position:absolute;
+  transform-origin:center 20px;
+  animation:a120 2s ease-in-out infinite;
+}
+@keyframes a120{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(.6);opacity:.3}}
+
+/* === #121 SPINNING COG === */
+.anim-121 .cog{
+  width:40px;height:40px;
+  position:relative;
+  animation:a121 2s linear infinite;
+}
+.anim-121 .tooth{
+  width:6px;height:10px;
+  background:var(--copper);
+  position:absolute;
+  border-radius:2px;
+}
+@keyframes a121{to{transform:rotate(360deg)}}
+
+/* === #122 LIQUID FILL === */
+.anim-122 .glass{
+  width:24px;height:36px;
+  border:2px solid var(--chrome-dim);
+  border-radius:0 0 4px 4px;
+  position:relative;overflow:hidden;
+}
+.anim-122 .liquid{
+  position:absolute;bottom:0;width:100%;
+  background:var(--copper);
+  animation:a122 2s ease-in-out infinite;
+}
+@keyframes a122{0%,100%{height:20%}50%{height:80%}}
+
+/* === #123 ORBITAL CROSS === */
+.anim-123 .orb{
+  width:44px;height:44px;
+  border:1.5px solid var(--border);
+  border-radius:50%;
+  position:relative;
+  animation:a123 3s linear infinite;
+}
+.anim-123 .orb::before{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  background:var(--copper);border-radius:50%;
+  top:-4px;left:50%;margin-left:-4px;
+}
+.anim-123 .orb::after{
+  content:'';position:absolute;
+  width:8px;height:8px;
+  background:var(--steel);border-radius:50%;
+  bottom:-4px;left:50%;margin-left:-4px;
+}
+@keyframes a123{to{transform:rotate(360deg)}}
