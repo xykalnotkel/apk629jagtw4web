@@ -144,30 +144,3 @@ Cloudflare Pages saat ini tidak mengizinkan eksekusi binary native di Pages Func
 ## Lisensi
 
 MIT — bebas dipakai, dimodifikasi, dan di-deploy untuk keperluan pribadi maupun komersial.
-
-## GitHub Actions (CI/CD)
-
-Project ini dilengkapi tiga workflow yang berjalan otomatis:
-
-1. **build-scanner.yml** — Setiap ada perubahan di `backend/scanner.cpp`, GitHub Actions akan:
-   - Menjalankan `apt install g++` di Ubuntu runner
-   - Mengompilasi scanner dengan flag static (`-static -static-libgcc -static-libstdc++`)
-   - Memverifikasi binary benar-benar static (`ldd` = "not a dynamic executable")
-   - Smoke test dengan menjalankan binary terhadap `example.com`
-   - Commit binary `backend/cekcelah-scanner` kembali ke repo
-
-   Artinya kamu cukup edit file C++ di GitHub (web UI), push, dan binary terbaru otomatis tersedia — tidak perlu kompilasi lokal.
-
-2. **ci.yml** — Setiap push/PR akan menjalankan:
-   - `npm ci`
-   - `tsc --noEmit` (type check TypeScript)
-   - `npm run build` (build Next.js)
-   - Upload artifact `.next`
-
-3. **deploy.yml** — Auto-deploy ke Vercel setelah push ke `main`.
-   Untuk mengaktifkannya:
-   - Buat Vercel token di https://vercel.com/account/tokens
-   - Tambahkan secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` di repo Settings → Secrets and variables → Actions
-   - Setiap push akan otomatis deploy ke production
-
-Binary yang dihasilkan workflow `build-scanner.yml` adalah **statically-linked x86_64 Linux ELF**, format yang sama dengan lingkungan Vercel (Amazon Linux 2), sehingga 100% kompatibel tanpa perlu VPS/Railway/Render.

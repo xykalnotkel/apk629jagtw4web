@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CekCelah — Web Security, Quality & Health Scanner",
+  metadataBase: new URL("https://cekcelah.vercel.app"),
+  title: {
+    default: "CekCelah — Web Security, Quality & Health Scanner",
+    template: "%s | CekCelah",
+  },
   description:
-    "CekCelah adalah scanner keamanan, kualitas, dan kesehatan website native berkecepatan tinggi, didukung backend C++ dan Next.js 14.",
+    "CekCelah adalah scanner keamanan, kualitas, dan kesehatan website native berkecepatan tinggi, didukung backend C++ dan Next.js.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

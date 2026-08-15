@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,7 +7,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Only two-color palette: deep blue + ice white-blue (metallic feel)
         deep: {
           DEFAULT: "#1e3a8a",
           950: "#0b1a3f",
@@ -30,22 +28,15 @@ const config: Config = {
           800: "#0f1629",
           700: "#151d35",
           600: "#1b2545",
-        }
-      },
-      fontFamily: {
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
-        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
-      },
-      backgroundImage: {
-        "metal-shine": "linear-gradient(135deg, #1b2545 0%, #0f1629 50%, #1b2545 100%)",
-        "metal-brushed": "linear-gradient(90deg, rgba(191,219,254,0.03) 0%, rgba(224,240,255,0.08) 50%, rgba(191,219,254,0.03) 100%)",
+        },
       },
       boxShadow: {
-        "metal": "0 1px 0 rgba(224,240,255,0.08) inset, 0 10px 30px rgba(0,0,0,0.4)",
-        "metal-sm": "0 1px 0 rgba(224,240,255,0.06) inset, 0 2px 8px rgba(0,0,0,0.3)",
-        "glow-blue": "0 0 0 1px rgba(191,219,254,0.15), 0 0 24px rgba(30,58,138,0.4)",
-        "inset-blue": "inset 0 0 20px rgba(30,58,138,0.35)",
+        metal:
+          "inset 0 1px 0 rgba(224,240,255,0.08), 0 10px 30px rgba(0,0,0,0.4)",
+        "metal-sm":
+          "inset 0 1px 0 rgba(224,240,255,0.06), 0 2px 8px rgba(0,0,0,0.3)",
+        "glow-blue":
+          "0 0 0 1px rgba(191,219,254,0.15), 0 0 24px rgba(30,58,138,0.4)",
       },
       keyframes: {
         scan: {
