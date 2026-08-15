@@ -1,8 +1,7 @@
 name: Build C++ Scanner
 
-# Workflow HARUS di repo-root .github/workflows agar dikenali GitHub Actions.
-# Binary di-compile di Ubuntu runner (sama dengan Vercel x86_64), static linking,
-# lalu di-commit kembali ke repo. Path cekcelah tetap di subfolder CekCelah/.
+# Workflow ada di repo-root .github/workflows. Tidak memakai defaults.run.working-directory
+# agar perintah git add/push dijalankan dari repo root. Build step tetap 'cd CekCelah'.
 
 on:
   push:
@@ -20,9 +19,6 @@ jobs:
   build:
     name: Compile & Test C++ Scanner
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: CekCelah
 
     steps:
       - name: Checkout
@@ -36,6 +32,7 @@ jobs:
 
       - name: Compile static binary
         run: |
+          cd CekCelah
           g++ -std=c++20 -O2 \
               -static -static-libgcc -static-libstdc++ \
               -o backend/cekcelah-scanner \
@@ -46,6 +43,7 @@ jobs:
 
       - name: Verify static linking
         run: |
+          cd CekCelah
           file backend/cekcelah-scanner
           echo "--- ldd (must show not a dynamic executable) ---"
           ldd backend/cekcelah-scanner 2>&1 || true
@@ -54,6 +52,7 @@ jobs:
 
       - name: Smoke test
         run: |
+          cd CekCelah
           ./backend/cekcelah-scanner example.com > /tmp/scan.out
           head -20 /tmp/scan.out
           if grep -q "^HOST" /tmp/scan.out && grep -q "^CHECK" /tmp/scan.out && grep -q "^DONE" /tmp/scan.out; then
