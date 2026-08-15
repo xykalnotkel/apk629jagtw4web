@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js build
+.next/
+out/
+build/
+dist/
+
+# Production misc
+.npm/
+.yarn/
+.pnp.*
+.yarn-integrity
+
+# Env
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+
+# Compiled C++ binary source stays in repo (we commit statically-linked binary for Vercel serverless)
+# Uncomment only if you rebuild and want to ignore binary
+# backend/cekcelah-scanner
+# backend/cekcelah-scanner.exe
+backend/*.o
+backend/*.out
+
+# Misc
+.vercel
+.turbo
+*.tsbuildinfo
+next-env.d.ts
