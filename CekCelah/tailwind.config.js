@@ -1,8 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  safelist: [
+    "metal-panel", "metal-btn", "metal-input", "brushed", "rivet",
+    "grid-bg", "scan-beam", "chip", "chip-pass", "chip-warn", "chip-fail",
+    "status-dot", "status-pass", "status-warn", "status-fail",
+    "graffiti-text", "shimmer-bar", "ring-glow",
+    "bg-deep", "bg-ice-200", "text-deep", "text-ice-50", "text-ice-100", "text-ice-200", "text-ice-300",
+    "border-ice-300/10", "border-ice-300/15", "border-ice-300/20", "border-ice-300/25", "border-ice-300/30",
+    "border-ice-300/40", "border-ice-300/60",
   ],
   theme: {
     extend: {
@@ -68,3 +76,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+module.exports = config;
