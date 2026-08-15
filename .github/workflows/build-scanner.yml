@@ -1,8 +1,8 @@
 name: Build C++ Scanner
 
-# Compile C++ scanner menjadi static binary x86_64 Linux (cocok dengan Vercel runtime)
-# Setiap ada perubahan di backend/scanner.cpp atau workflow ini, binary akan
-# di-compile ulang dgn g++ lalu di-commit kembali ke repo.
+# Workflow HARUS di repo-root .github/workflows agar dikenali GitHub Actions.
+# Binary di-compile di Ubuntu runner (sama dengan Vercel x86_64), static linking,
+# lalu di-commit kembali ke repo. Path cekcelah tetap di subfolder CekCelah/.
 
 on:
   push:
@@ -11,33 +11,31 @@ on:
       - '.github/workflows/build-scanner.yml'
     branches:
       - main
-  workflow_dispatch:  # bisa dijalankan manual dari tab Actions
+  workflow_dispatch:
 
 permissions:
-  contents: write  # izin commit balik ke repo
-
-defaults:
-  run:
-    working-directory: CekCelah
+  contents: write
 
 jobs:
   build:
     name: Compile & Test C++ Scanner
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: CekCelah
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install build tools
+      - name: Install g++
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y --no-install-recommends g++ make file
+          sudo apt-get install -y --no-install-recommends g++ file
           g++ --version | head -1
 
-      - name: Compile scanner (statically-linked, x86_64)
+      - name: Compile static binary
         run: |
-          mkdir -p backend
           g++ -std=c++20 -O2 \
               -static -static-libgcc -static-libstdc++ \
               -o backend/cekcelah-scanner \
@@ -46,38 +44,35 @@ jobs:
           ls -la backend/
           file backend/cekcelah-scanner
 
-      - name: Verify binary is fully static
+      - name: Verify static linking
         run: |
-          echo "=== Binary info ==="
           file backend/cekcelah-scanner
-          echo "=== Dynamic deps (harus 'not a dynamic executable') ==="
+          echo "--- ldd (must show not a dynamic executable) ---"
           ldd backend/cekcelah-scanner 2>&1 || true
-          echo "=== Size ==="
+          echo "--- size ---"
           du -h backend/cekcelah-scanner
 
-      - name: Quick smoke test
+      - name: Smoke test
         run: |
-          echo "--- Running scanner against example.com ---"
-          ./backend/cekcelah-scanner example.com | head -20
-          echo "--- Validate output has HOST + CHECK lines ---"
           ./backend/cekcelah-scanner example.com > /tmp/scan.out
+          head -20 /tmp/scan.out
           if grep -q "^HOST" /tmp/scan.out && grep -q "^CHECK" /tmp/scan.out && grep -q "^DONE" /tmp/scan.out; then
             echo "Smoke test PASSED"
           else
-            echo "Smoke test FAILED"
-            cat /tmp/scan.out
+            echo "FAILED"
             exit 1
           fi
 
-      - name: Commit binary back to repo
+      - name: Commit binary back
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add backend/cekcelah-scanner
           if git diff --cached --quiet; then
-            echo "Binary is unchanged, nothing to commit."
+            echo "Binary unchanged, nothing to commit."
           else
             git commit -m "chore(scanner): rebuild C++ static binary [skip ci]"
             git push
-            echo "Binary updated and pushed."
+            echo "Binary pushed."
           fi
+        working-directory: .

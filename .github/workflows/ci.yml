@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'CekCelah/**'
+      - '.github/workflows/ci.yml'
     branches:
       - main
   pull_request:
@@ -11,14 +12,13 @@ on:
       - 'CekCelah/**'
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: CekCelah
-
 jobs:
   build:
     name: Build & Type-check
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: CekCelah
 
     steps:
       - name: Checkout
@@ -31,19 +31,17 @@ jobs:
           cache: 'npm'
           cache-dependency-path: CekCelah/package-lock.json
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci --no-audit --no-fund
 
-      - name: Ensure C++ binary exists (build if missing)
+      - name: Ensure C++ binary
         run: |
           if [ ! -x backend/cekcelah-scanner ]; then
-            echo "Binary missing, compiling..."
-            sudo apt-get update -y && sudo apt-get install -y --no-install-recommends g++
+            sudo apt-get update -y
+            sudo apt-get install -y --no-install-recommends g++
             g++ -std=c++20 -O2 -static -static-libgcc -static-libstdc++ \
                 -o backend/cekcelah-scanner backend/scanner.cpp
             chmod +x backend/cekcelah-scanner
-          else
-            echo "Binary already present."
           fi
           file backend/cekcelah-scanner
 
@@ -55,7 +53,7 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Upload build artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-build
