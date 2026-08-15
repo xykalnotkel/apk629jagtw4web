@@ -3,7 +3,15 @@ name: CI - Next.js Build & Type Check
 on:
   push:
     paths:
-      - 'CekCelah/**'
+      - 'CekCelah/src/**'
+      - 'CekCelah/package.json'
+      - 'CekCelah/package-lock.json'
+      - 'CekCelah/tsconfig.json'
+      - 'CekCelah/next.config.js'
+      - 'CekCelah/tailwind.config.ts'
+      - 'CekCelah/postcss.config.js'
+      - 'CekCelah/public/**'
+      - 'CekCelah/backend/scanner.cpp'
       - '.github/workflows/ci.yml'
     branches:
       - main
@@ -16,9 +24,6 @@ jobs:
   build:
     name: Build & Type-check
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: CekCelah
 
     steps:
       - name: Checkout
@@ -33,6 +38,7 @@ jobs:
 
       - name: Install deps
         run: npm ci --no-audit --no-fund
+        working-directory: CekCelah
 
       - name: Ensure C++ binary
         run: |
@@ -44,12 +50,15 @@ jobs:
             chmod +x backend/cekcelah-scanner
           fi
           file backend/cekcelah-scanner
+        working-directory: CekCelah
 
       - name: Type check
         run: npx tsc --noEmit
+        working-directory: CekCelah
 
       - name: Build Next.js
         run: npm run build
+        working-directory: CekCelah
         env:
           NODE_ENV: production
 
