@@ -10,7 +10,15 @@ export const uiCats = [
   { id: 'transition', label: 'Transition' },
 ];
 
-const D = (cls, children) => React.createElement('div', { className: cls }, children);
+const D = (cls, ...args) => {
+  let props = { className: cls };
+  let children = args;
+  if (args.length > 0 && args[0] && typeof args[0] === 'object' && !Array.isArray(args[0]) && !args[0].type && !args[0].props) {
+    props = { ...props, ...args[0] };
+    children = args.slice(1);
+  }
+  return React.createElement('div', props, ...children);
+};
 
 export const uiAnimations = [
   // CARD (1-10)
